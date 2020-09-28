@@ -50,9 +50,10 @@
 
         // Insert user data into table
         $result = mysqli_query($conn, "INSERT INTO tb_pemakaian VALUES('','$barang','$jumlah',now())");
+        $kurangi = mysqli_query($conn, "UPDATE tb_barang SET stok_brg = stok_brg-$jumlah where id_brg=$barang");
 
         // Show message when user added
-        echo "User added successfully. <a href='index.php'>View Users</a>";
+        // echo "User added successfully. <a href='index.php'>View Users</a>";
 
 				// $barang = $connection->conn->real_escape_string($_POST['barang']);
 				// $jumlah = $connection->conn->real_escape_string($_POST['jumlah']);
@@ -62,7 +63,7 @@
 
 				// if (@$_POST['tambah_pakai']) {
 				// 	$brg->tambah_pakai($barang,$jumlah);
-				// 	header("location: ?page=pemakaian");
+					header("location: ?page=pemakaian");
 				// } else {
 				// 	echo "<script>alert('data gagal di tambahkan')</script>";
 				// }
